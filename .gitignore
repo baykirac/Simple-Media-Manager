@@ -14,3 +14,4 @@ obj/
 \v17
 .suo
 # End of https://www.toptal.com/developers/gitignore/api/dotnetcore
+/Simple-Media-Manager/SMM.API/libman.json
