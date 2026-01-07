@@ -16,6 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SMM.Application\SMM.Application.csproj" />
+    <ProjectReference Include="..\SMM.Domain\SMM.Domain.csproj" />
     <ProjectReference Include="..\SMM.Persistence\SMM.Persistence.csproj" />
   </ItemGroup>
 

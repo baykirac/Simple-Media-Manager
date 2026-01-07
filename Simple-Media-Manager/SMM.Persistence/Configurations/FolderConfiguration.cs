@@ -22,7 +22,6 @@ namespace SMM.Persistence.Configurations
                 .HasColumnName("folder_name");
 
             builder.Property(f => f.ParentId)
-                .IsRequired()
                 .HasColumnName("parent_id");
 
             builder.HasOne(f => f.Parent)

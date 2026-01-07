@@ -7,11 +7,11 @@ namespace SMM.Domain.Entities
     public class Media : BaseEntity
     {
 
-        public string MediaName { get; private set; } = null;
-        public string MediaUrl { get; private set; } = null;
-        public long FolderId { get; private set; }
+        public string MediaName { get; set; } = null;
+        public string MediaUrl { get; set; } = null;
+        public long FolderId { get; set; }
 
-        public Folder Folder { get; private set; } = null;
+        public Folder Folder { get; set; } = null;
 
         private Media()
         {
