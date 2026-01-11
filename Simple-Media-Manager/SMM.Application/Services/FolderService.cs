@@ -1,5 +1,5 @@
 ﻿using SMM.Domain.Entities;
-using SMM.Domain.Repositories;
+using SMM.Domain.Interfaces.Repositories;
 
 namespace SMM.Application.Services
 {
@@ -14,7 +14,7 @@ namespace SMM.Application.Services
 
         public async Task<List<Folder>> GetAll()
         {
-            return await fodlerRepository.GetAll();
+            return await fodlerRepository.GetAllAsync();
         }
     }
 }

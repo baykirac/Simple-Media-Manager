@@ -41,12 +41,16 @@ namespace SMM.Domain.Entities
 
         public void SetMediaUrl(string mediaUrl)
         {
-            if (!string.IsNullOrWhiteSpace(mediaUrl))
+            if (string.IsNullOrWhiteSpace(mediaUrl))
                 throw new DomainException(Messages.Exception_EmptyMediaUrl);
             if (mediaUrl.Length > 300)
                 throw new DomainException(Messages.Exception_ExceedMediaUrl);
 
             MediaUrl = mediaUrl;
+        }
+        public void SetFolderId(long folderId)
+        {
+            FolderId = folderId;
         }
     }
 }

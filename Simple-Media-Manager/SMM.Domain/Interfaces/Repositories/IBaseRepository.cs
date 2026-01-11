@@ -1,13 +1,13 @@
 ﻿using SMM.Domain.Common;
+using SMM.Domain.Entities;
 
-namespace SMM.Domain.Repositories
+namespace SMM.Domain.Interfaces.Repositories
 {
     public interface IBaseRepository<T> where T : BaseEntity
     {
-        Task<List<T>> GetAll();
-        Task<T> GetById(long id);
+        Task<List<T>> GetAllAsync();
+        Task<T> GetByIdAsync(long id);
         Task<long> CreateAsync(T entity);
-        Task<T> UpdateAsync(T entity);
         Task<T> DeleteAsync(long id);
     }
 }

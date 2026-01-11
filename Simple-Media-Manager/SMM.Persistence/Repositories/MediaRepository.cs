@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SMM.Domain.DTOs.MediaDTOs;
 using SMM.Domain.Entities;
-using SMM.Domain.Repositories;
+using SMM.Domain.Interfaces.Repositories;
 using SMM.Persistence.Context;
 
 namespace SMM.Persistence.Repositories
@@ -34,22 +35,31 @@ namespace SMM.Persistence.Repositories
             return entity;
         }
 
-        public async Task<List<Media>> GetAll()
+        public async Task<List<Media>> GetAllAsync()
         {
             return await context.Medias.ToListAsync();
         }
 
-        public async Task<Media?> GetById(long id)
+        public async Task<Media?> GetByIdAsync(long id)
         {
             return await context.Medias.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<Media> UpdateAsync(Media entity)
+        public async Task<Media?> UpdateAsync(long id, MediaPutDTO updatedEntity)
         {
-            context.Medias.Update(entity);
+            var existingEntity = await context.Medias
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (existingEntity != null)
+            {
+                existingEntity.SetMediaUrl(updatedEntity.MediaUrl);
+                existingEntity.SetMediaName(updatedEntity.MediaName);
+                existingEntity.SetFolderId(updatedEntity.FolderId);
+            }
+
             await context.SaveChangesAsync();
 
-            return entity;
+            return existingEntity;
         }
     }
 }

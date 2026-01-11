@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SMM.Application.Services;
-using SMM.Domain.Repositories;
+using SMM.Domain.Interfaces.Repositories;
+using SMM.Domain.Interfaces.Services;
 using SMM.Persistence.Context;
 using SMM.Persistence.Repositories;
 
@@ -15,7 +16,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IMediaRepository, MediaRepository>();
 builder.Services.AddScoped<IFolderRepository, FolderRepository>();
-builder.Services.AddScoped<MediaService>();
+builder.Services.AddScoped<IMediaService, MediaService>();
 builder.Services.AddScoped<FolderService>();
 builder.Services.AddDbContext<MediaManagerDbContext>(options =>
 {

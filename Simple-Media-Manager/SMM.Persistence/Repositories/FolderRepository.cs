@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SMM.Domain.Entities;
-using SMM.Domain.Repositories;
+using SMM.Domain.Interfaces.Repositories;
 using SMM.Persistence.Context;
 
 namespace SMM.Persistence.Repositories
@@ -34,22 +34,19 @@ namespace SMM.Persistence.Repositories
             return entity;
         }
 
-        public async Task<List<Folder>> GetAll()
+        public async Task<List<Folder>> GetAllAsync()
         {
             return await context.Folders.ToListAsync();
         }
 
-        public async Task<Folder?> GetById(long id)
+        public async Task<Folder?> GetByIdAsync(long id)
         {
             return await context.Folders.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<Folder> UpdateAsync(Folder entity)
+        public Task<Media> UpdateAsync(long id, Folder updatedEntity)
         {
-            context.Folders.Update(entity);
-            await context.SaveChangesAsync();
-
-            return entity;
+            throw new NotImplementedException();
         }
     }
 }
