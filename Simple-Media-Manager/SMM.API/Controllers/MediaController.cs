@@ -23,31 +23,31 @@ namespace SMM.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await mediaService.GetAll());
+            return Ok(await mediaService.GetAllAsync());
         }
 
         [HttpGet("{id:long}")]
         public async Task<IActionResult> GetById(long id)
         {
-            return Ok(await mediaService.GetById(id));
+            return Ok(await mediaService.GetByIdAsync(id));
         }
 
         [HttpPost]
         public async Task<IActionResult> Add(MediaCreateDto media)
         {
-            return Ok(await mediaService.Add(media));
+            return Ok(await mediaService.AddAsync(media));
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put(long id, [FromBody] MediaPutDTO updatedEntity)
+        public async Task<IActionResult> Update(long id, [FromBody] MediaPutDTO updatedEntity)
         {
-            return Ok(await mediaService.Put(id, updatedEntity));
+            return Ok(await mediaService.UpdateAsync(id, updatedEntity));
         }
 
         [HttpDelete("{id:long}")]
         public async Task<IActionResult> Delete (long id)
         {
-            return Ok(await mediaService.Delete(id));
+            return Ok(await mediaService.DeleteAsync(id));
         } 
     }
 }

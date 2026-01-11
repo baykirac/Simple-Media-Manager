@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using SMM.Application.Services;
 using SMM.Domain.Interfaces.Repositories;
 using SMM.Domain.Interfaces.Services;
@@ -17,13 +18,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IMediaRepository, MediaRepository>();
 builder.Services.AddScoped<IFolderRepository, FolderRepository>();
 builder.Services.AddScoped<IMediaService, MediaService>();
-builder.Services.AddScoped<FolderService>();
+builder.Services.AddScoped<IFolderService, FolderService>();
 builder.Services.AddDbContext<MediaManagerDbContext>(options =>
 {
     options.UseNpgsql(
         builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
+builder.Services.AddControllers().AddJsonOptions((options) =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+});
 
 var app = builder.Build();
 

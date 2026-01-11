@@ -14,29 +14,29 @@ namespace SMM.Application.Services
             this.mediaRepository = mediaRepository;
         }
 
-        public async Task<List<Media>> GetAll()
+        public async Task<List<Media>> GetAllAsync()
         {
             return await mediaRepository.GetAllAsync();
         }
 
-        public async Task<long> Add(MediaCreateDto dto)
+        public async Task<long> AddAsync(MediaCreateDto dto)
         {
             var media = Media.Create(dto.MediaName, dto.MediaUrl, dto.FolderId);
 
             return await mediaRepository.CreateAsync(media);
         }
 
-        public async Task<Media> Delete(long id)
+        public async Task<Media> DeleteAsync(long id)
         {
             return await mediaRepository.DeleteAsync(id);
         }
 
-        public async Task<Media> GetById(long id)
+        public async Task<Media> GetByIdAsync(long id)
         {
             return await mediaRepository.GetByIdAsync(id);
         }
 
-        public async Task<Media> Put(long id, MediaPutDTO updatedEntity)
+        public async Task<Media> UpdateAsync(long id, MediaPutDTO updatedEntity)
         {
             return await mediaRepository.UpdateAsync(id, updatedEntity);
         }

@@ -19,7 +19,7 @@ namespace SMM.Domain.Entities
         private Folder(string folderName, long? parentId)
         {
             SetFolderName(folderName);
-            ParentId = parentId;
+            SetParentFolderById(parentId);
         }
 
         public static Folder Create(string folderName, long? parentId)
@@ -35,6 +35,16 @@ namespace SMM.Domain.Entities
                 throw new DomainException(Messages.Exception_ExceedFolderName);
 
             FolderName = folderName;
+        }
+
+        public void SetParentFolderById(long? parentId)
+        {
+            ParentId = parentId;
+        }
+
+        public void SetParentFolderById(string parentId)
+        {
+            throw new NotImplementedException();
         }
     }
 }
